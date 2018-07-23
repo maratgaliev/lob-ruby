@@ -67,6 +67,8 @@ module Lob
           user_agent: 'Lob/v1 RubyBindings/' + clientVersion,
           "Lob-Version" => config[:api_version]
         })
+        
+        headers["Idempotency-Key"] = config[:idempotency_key] if config[:idempotency_key]
 
         if query != {}
           url = "#{url}?#{build_nested_query(query)}"
@@ -84,7 +86,7 @@ module Lob
           body.define_singleton_method(:_response) do
             response
           end
-
+          
           return body
 
         rescue RestClient::ExceptionWithResponse => e

@@ -8,6 +8,12 @@ describe Lob do
     assert lob.config[:api_version] == "2014-11-25"
   end
 
+  it "should return the client object for the valid idempotency_key and add key to config" do
+    lob = Lob::Client.new(api_key: "test", idempotency_key: 'test_key')
+    lob.must_be_kind_of(Lob::Client)
+    assert lob.config[:idempotency_key] == "test_key"
+  end
+
   it "should pass the API key to the resource for the version" do
     Lob::Client.new(api_key: "test").config[:api_key].must_equal "test"
   end
@@ -25,7 +31,7 @@ describe Lob do
     end
   end
 
-  it "should work when no api_version is provided" do
+  it "should work when no api_version and idempotency_key is provided" do
     lob = Lob::Client.new(api_key: API_KEY)
     lob.addresses.list
   end

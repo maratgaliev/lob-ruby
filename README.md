@@ -66,6 +66,9 @@ lob = Lob::Client.new(api_key: "your-api-key")
 
 # To initialize a Lob object with an older API version
 lob = Lob::Client.new(api_key: "your-api-key", api_version: "2014-12-18")
+
+# To initialize a Lob object with an idempotency key
+lob = Lob::Client.new(api_key: "your-api-key", idempotency_key: YOUR_UNIQ_KEY)
 ```
 
 #### Caution: Pass zero-prefixed zip codes as strings
@@ -114,6 +117,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Versioning](https://lob.com/docs/ruby#version)
 - [Errors](https://lob.com/docs/ruby#errors)
 - [Rate Limiting](https://lob.com/docs/ruby#rate-limits)
+- [Idempotent Requests](https://lob.com/docs/ruby#idempotent-requests)
 - [Webhooks](https://lob.com/docs/ruby#webhooks)
 - [Cancellation Windows](https://lob.com/docs/ruby#cancellation)
 - [Scheduled Mailings](https://lob.com/docs/ruby#scheduled)
